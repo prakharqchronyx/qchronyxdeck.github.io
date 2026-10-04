@@ -175,6 +175,31 @@ a.deep:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .rp-card .ch{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;padding:3px 9px;border-radius:999px;border:1px solid;align-self:flex-start;margin-top:auto}
 .rp-nav .ch{color:var(--blue);border-color:rgba(36,86,200,.35);background:rgba(36,86,200,.05)}
 .rp-time .ch{color:var(--red);border-color:rgba(217,45,26,.35);background:rgba(217,45,26,.05)}
+/* seed roadmap: KPI tiles, use-of-funds bar, 36-month runway, milestone cards */
+.sd-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:24px}
+.sd-kpi{padding:16px 22px 18px;display:flex;flex-direction:column;gap:6px}
+.sd-kpi .tag{color:var(--ink3)}
+.sd-kpi .num{font-weight:600;font-size:52px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:6px;white-space:nowrap}
+.sd-kpi .num small{font-size:26px;letter-spacing:-.01em}
+.sd-kpi .num sup{font-size:26px;line-height:0;margin-left:2px}
+.sd-kpi p{margin:0;font-size:16px;line-height:1.38;color:var(--ink2)}
+.sd-label{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:26px 0 12px}
+.sd-strip{flex:none!important;width:100%}
+.sd-ms{display:grid;grid-template-columns:1fr 1fr 1fr 3fr;gap:12px;margin-top:8px}
+.sd-m{padding:14px 18px 16px;display:flex;flex-direction:column;gap:9px}
+.sd-m .bar{height:4px;border-radius:2px;background:var(--red)}
+.sd-m .hd{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sd-m .m{font-family:var(--mono);font-size:15px;letter-spacing:.08em;color:var(--red)}
+.sd-m .ch{font-family:var(--mono);font-size:12px;letter-spacing:.03em;padding:2px 9px;border-radius:999px;border:1px solid rgba(217,45,26,.35);color:var(--red);background:rgba(217,45,26,.05)}
+.sd-m p{margin:0;font-size:17px;line-height:1.4;color:var(--ink)}
+.sd-m sup{font-size:.62em;line-height:0}
+.sd-m p.then{font-size:16px;color:var(--ink2)}
+.sd-m.next .bar{background:var(--navy)}
+.sd-m.next .m{color:var(--navy)}
+.sd-m.next .ch{color:var(--ink3);border-color:var(--line2);background:var(--bg)}
+.sd-band{margin-top:16px;background:var(--navy);color:#fff;border-radius:14px;padding:15px 24px;display:flex;align-items:center;gap:16px;font-size:20px;line-height:1.3}
+.sd-band .tag{color:#FF8E7E;flex:none}
+.sd-band b{font-weight:600}
 /* slide 7: intact clock first, then exploded view; Assembled/Exploded toggle */
 .xpanel .intact{position:absolute;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none}
 .deck:not(.scroll) .frame.active .xpanel:not(.manual) .intact{animation:xintact 3s ease .15s both}
@@ -581,6 +606,30 @@ a.deep:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
   <h2 class="a" style="--d:120;margin-top:14px">Cell → clock → <span class="hl">navigation.</span> 36 months.</h2>
   <div class="viz a" style="--d:300;margin-top:24px" id="viz-plan"></div>
   <div class="foot"><span class="brand"><img src="data:image/png;base64,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" alt="">QChronyx</span><span class="src">Anchors in motion: QNu Labs · Ananth Technologies · Indian Navy · RCI (DRDO) · ISRO SAC</span></div>
+</section></div>
+
+<!-- 20b · SEED ROADMAP -->
+<div class="frame" data-id="seed"><section class="slide">
+  <span class="kicker a">Roadmap · the seed round</span>
+  <h2 class="s a" style="--d:120;margin-top:14px">$500K / ₹5 Cr seed unlocks <span class="hl">the next 18 months.</span></h2>
+  <div class="sd-kpis">
+    <div class="card sd-kpi a" style="--d:220"><span class="tag">Seed round · now</span><div class="num"><span class="hl">₹<span data-count="5">5</span> Cr</span></div><p>Part of a ₹30 Cr plan across 36 months</p></div>
+    <div class="card sd-kpi a" style="--d:290"><span class="tag">Time horizon</span><div class="num"><span data-count="36">36</span><small> months</small></div><p>Vapor cells → atomic clock → QINS</p></div>
+    <div class="card sd-kpi a" style="--d:360"><span class="tag">Clock target</span><div class="num">1×10<sup>−11</sup></div><p>Stability @ 1 s · 24 h+ holdover</p></div>
+    <div class="card sd-kpi a" style="--d:430"><span class="tag">QINS target</span><div class="num">&gt; <span data-count="48">48</span><small> h</small></div><p>GPS-denied holdover · launch Q4 2029</p></div>
+  </div>
+  <div class="sd-label a" style="--d:520">Use of funds · ₹5 Cr seed</div>
+  <div class="viz sd-strip a" id="viz-funds" style="--d:560;height:100px"></div>
+  <div class="sd-label a" style="--d:680">36-month milestones</div>
+  <div class="viz sd-strip a" id="viz-runway" style="--d:720;height:80px"></div>
+  <div class="sd-ms">
+    <div class="card sd-m a" style="--d:800"><div class="bar"></div><div class="hd"><span class="m">M0–6</span><span class="ch">Seed</span></div><p>Vapor cell design · UHV · Rb spectroscopy</p></div>
+    <div class="card sd-m a" style="--d:860"><div class="bar"></div><div class="hd"><span class="m">M6–12</span><span class="ch">Seed</span></div><p>First atomic clock · ISRO SAC ToT · NMR verification</p></div>
+    <div class="card sd-m a" style="--d:920"><div class="bar"></div><div class="hd"><span class="m">M12–18</span><span class="ch">Seed</span></div><p>QINS IMU integration · Xe&nbsp;/&nbsp;He-3 cells · 10<sup>−11</sup> stability</p></div>
+    <div class="card sd-m next a" style="--d:980"><div class="bar"></div><div class="hd"><span class="m">M18–36</span><span class="ch">Follow-on</span></div><p>GPS-denied validation · space-grade clock qualification</p><p class="then">Then: commercial time-server sales · first QINS sale, Q4 2029</p></div>
+  </div>
+  <div class="sd-band a" style="--d:1060"><span class="tag">The seed</span><span><b>Delivers P1 in full</b> and starts P2 clocks and P3 QINS.</span></div>
+  <div class="foot"><span class="brand"><img src="data:image/png;base64,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" alt="">QChronyx</span><span class="src">Company plan · ₹ amounts derived from the use-of-funds split</span></div>
 </section></div>
 
 <!-- 21 · TRACTION -->
@@ -1286,6 +1335,47 @@ a.deep:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
     return { enter: function () { loop('plan', draw); }, leave: function () { stop('plan'); draw(9); } };
   })();
 
+  /* ================================================= 20b · SEED ROADMAP (use of funds + runway) */
+  var seed = (function () {
+    var f = svg('viz-funds', 1440, 100, 'Use of the ₹5 Cr seed: manpower 25%, consumables and capex 25%, IP 15%, opex, marketing and sales 30%, misc. 5%.');
+    var r = svg('viz-runway', 1440, 80, '36-month timeline: the seed funds months 0 to 18; follow-on capital funds months 18 to 36.');
+    if (!f || !r) return {};
+    var F = [['Manpower', 25, 'var(--navy)'], ['Consumables + capex', 25, 'var(--blue)'], ['IP', 15, 'var(--gold)'], ['Opex, marketing & sales', 30, 'var(--red)'], ['Misc.', 5, 'var(--ink3)']];
+    var gap = 4, W = 1440 - gap * (F.length - 1), x = 0, segs = [];
+    F.forEach(function (d, i) {
+      var w = W * d[1] / 100, last = i === F.length - 1, narrow = w < 120, ax = last ? x + w : x, an = last ? 'end' : 'start';
+      var rc = el('rect', { x: x, y: 0, width: w, height: 46, rx: 6, fill: d[2], 'data-r': 'seg', 'data-i': i }, f);
+      var tx = [T(f, narrow ? x + w / 2 : x + 16, 29, d[1] + '%', 't-mono', 16, narrow ? 'middle' : 'start', { fill: '#fff', 'font-weight': 600, 'data-r': 'pct', 'data-i': i }),
+                T(f, ax, 74, d[0], 'f-ink t-body', 18, an, { 'data-r': 'name', 'data-i': i }),
+                T(f, ax, 95, '₹' + (+(5 * d[1] / 100).toFixed(2)) + ' Cr', 'f-ink3 t-mono', 14, an, { 'data-r': 'amt', 'data-i': i })];
+      segs.push({ rc: rc, w: w, tx: tx }); x += w + gap;
+    });
+    function X(m) { return 1440 * m / 36; }
+    [0, 6, 12, 18, 24, 30, 36].forEach(function (m) {
+      el('line', { x1: X(m), y1: 22, x2: X(m), y2: 50, 'class': 's-line2', 'stroke-width': 1, 'data-r': 'tick' }, r);
+      T(r, X(m), 13, 'M' + m, 'f-ink3 t-mono', 13, m === 0 ? 'start' : m === 36 ? 'end' : 'middle', { 'data-r': 'tick-lab' });
+    });
+    el('rect', { x: 0, y: 30, width: X(18), height: 12, rx: 6, 'class': 'f-line', 'data-r': 'track' }, r);
+    el('rect', { x: X(18) + 6, y: 30, width: X(36) - X(18) - 6, height: 12, rx: 6, 'class': 'f-line2', opacity: 0.7, 'data-r': 'track2' }, r);
+    var fill = el('rect', { x: 0, y: 30, width: X(18), height: 12, rx: 6, 'class': 'f-red', 'data-r': 'fill' }, r);
+    var ring = el('circle', { cx: X(18), cy: 36, r: 9, 'class': 's-red', 'stroke-width': 2, opacity: 0, 'data-r': 'ring' }, r);
+    var head = el('circle', { cx: X(18), cy: 36, r: 9, 'class': 'f-red', 'data-r': 'head' }, r);
+    T(r, 0, 72, 'SEED · ₹5 CR · M0–18', 'f-red t-mono', 13.5, 'start', { 'data-r': 'lab-seed' });
+    T(r, X(18) + 6, 72, 'FOLLOW-ON · REST OF THE ₹30 CR PLAN · M18–36', 'f-ink3 t-mono', 13.5, 'start', { 'data-r': 'lab-next' });
+    function draw(t) {
+      segs.forEach(function (sg, i) {
+        var k = reduced ? 1 : sm((t - 0.6 - 0.15 * i) / 0.6), o = reduced ? 1 : sm((t - 1.0 - 0.15 * i) / 0.4);
+        sg.rc.setAttribute('width', Math.max(0.01, sg.w * k)); sg.tx.forEach(function (e) { e.setAttribute('opacity', o); });
+      });
+      var k = reduced ? 1 : sm((t - 0.9) / 1.6), hx = X(18) * k;
+      fill.setAttribute('width', Math.max(0.01, hx)); head.setAttribute('cx', hx);
+      var on = !reduced && t > 2.5, ph = on ? ((t - 2.5) / 1.4) % 1 : 0;
+      ring.setAttribute('r', 9 + 15 * ph); ring.setAttribute('opacity', on ? 0.7 * (1 - ph) : 0);
+    }
+    draw(2.5);
+    return { enter: function () { loop('seed', draw); }, leave: function () { stop('seed'); draw(2.5); } };
+  })();
+
   /* ================================================= 21 · TRACTION list */
   (function () {
     var host = document.getElementById('trac'); if (!host) return;
@@ -1318,7 +1408,7 @@ a.deep:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
   /* ================================================= engine */
   function on3D(S) { if (S.preset === 'how' && cpt) cpt(S); }
-  var HOOKS = { attack: attack, navic: navic, resilient: guard, insight: { enter: function () { ns.enter && ns.enter(); drift.enter && drift.enter(); }, leave: function () { ns.leave && ns.leave(); drift.leave && drift.leave(); } }, map: map, win: win, server: server, gpr: gpr, tem: temw, qins: qins, market: market, plan: plan };
+  var HOOKS = { attack: attack, navic: navic, resilient: guard, insight: { enter: function () { ns.enter && ns.enter(); drift.enter && drift.enter(); }, leave: function () { ns.leave && ns.leave(); drift.leave && drift.leave(); } }, map: map, win: win, server: server, gpr: gpr, tem: temw, qins: qins, market: market, plan: plan, seed: seed };
   var forced = null;
   function fit() {
     var portrait = forced ? forced === 'scroll' : (window.innerWidth / window.innerHeight < 0.95);
